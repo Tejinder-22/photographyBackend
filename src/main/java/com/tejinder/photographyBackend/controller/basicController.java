@@ -9,13 +9,13 @@ public class basicController {
 
     public String go()
     {
-        return "contact";
+        return "index";
     }
 
-    @RequestMapping("/photography")
+    @RequestMapping("/contact")
 
     public String go2()
     {
-        return "index";
+        return "contact";
     }
 }
