@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../css/contact.css">
+
+
+	<script>
+		function add()
+		{
+			let name = document.getElementById("name").value;
+			let em =  document.getElementById("em").value;
+			let mob =  document.getElementById("mob").value;
+
+			if(name==""){
+				alert("Please Enter a valid name");
+				return false;
+			}
+			if(mob.length<10||mob.length==0)
+			{
+				alert("Please Enter a valid Mobile number");
+				return false;
+			}
+
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST","http://localhost:8080/on",true )
+			xhr.onreadystatechange = function() {                 //ONREADYSTATE Change tell us about error if cant work
+				if (this.readyState == 4 && this.status == 200) {
+					//oye browser data in url we are ftching is in jason format
+
+				}
+
+			};
+
+			var data={
+                "name": name,
+                 "email": em,
+				"phoneno": mob
+			}
+           alert("Thanks "+name+" your details have been saved, we will reach you ASAP");
+			xhr.send(JSON.stringify(data));
+		}
+	</script>
+</head>
+<body>
+
+
+<div class="hd">
+	<h1>SHARE INFORMATION</h1>
+<div class="main">
+	
+	<div >
+		<form  onsubmit="return add()" class="demo">
+			 <input type="text" value="name" id="name"><br>
+			<input type="text" value="email" id="em" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"><br>
+			<input type="text" value="phoneno" id="mob"><br>
+			<button type="submit" id="b1"><h3>submit</h3></button>
+		</form>
+
+	</div>
+</div>
+</div>
+</body>
+</html>
